@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+@using Factory.Models
+
+<h1>Engineers</h1>
+<p>@Html.ActionLink("New Engineer", "Create")</p>
+
+<h3>Engineers on payroll</h3>
+@foreach (Engineer engineer in Model)
+{
+  <p>@Html.ActionLink($"{engineer.Name}", "Details", new {id = engineer.EngineerId})</p>
+}
+<hr/>
+<p>@Html.ActionLink("Make a new engineer", "Create")</p>
