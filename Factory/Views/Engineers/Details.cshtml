@@ -8,3 +8,5 @@
 <h2>Engineer Details<h2>
 <p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
 <hr/>
+<p>@Html.ActionLink("Change Engineer's Details", "Edit", new { id = Model.EngineerId})</p>
+<p>@Html.ActionLink("Remove Engineer", "Delete", new { id = Model.EngineerId})</p>
