@@ -1,0 +1,13 @@
+@{
+    Layout = "_Layout";
+}
+@model Factory.Models.Machine
+
+<h2>Remove machine from payroll</h2>
+
+@Html.DisplayNameFor(model => model.Name) @Html.DisplayFor(model => model.Name)
+<br>
+@using (Html.BeginForm("Delete", "Machines", new { id = Model.MachineId }))
+{
+    <input type="submit" value="Delete" />
+}
