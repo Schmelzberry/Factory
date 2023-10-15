@@ -13,5 +13,5 @@
   <br>
   <input type="submit" value="Add Engineer">
 }
-
+<p>@Html.ValidationMessageFor(model => model.EngineerId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 <p>@Html.ActionLink("Take me to engineers", "Index")
