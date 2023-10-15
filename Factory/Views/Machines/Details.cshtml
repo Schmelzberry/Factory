@@ -18,7 +18,7 @@ else
   <h4>Engineers who work on this machine:</h4>
 @foreach (EngineerMachine join in Model.EngineerMachines)
 {
-    <p>@join.Machine.Name</p>
+    <p>@join.Engineer.Name</p>
     
     @using (Html.BeginForm("DeleteJoin", "Machines"))
     {
