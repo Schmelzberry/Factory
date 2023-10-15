@@ -2,7 +2,34 @@
   Layout = "_Layout";
 }
 
-<h1>Welcome to the factory!</h1>
-<hr/>
-<p>@Html.ActionLink("Create New engineer", "Create", "Engineers")
-<p>@Html.ActionLink("Create New machine", "Create", "Machines")
+@using Factory.Models;
+
+<h1>Welcome to the Factory!</h1>
+
+<hr>
+
+<h4>Engineers</h4>
+@if (Model["engineers"].Length == 0)
+{
+  <p>No engineers have been added yet!</p>
+}
+<ul>
+  @foreach (Engineer e in Model["engineers"])
+  {
+    <li>@Html.ActionLink(@e.Name, "Details", "Engineers", new { id = @e.EngineerId})</li>
+  }
+</ul>
+
+<h4>Machines</h4>
+@if (Model["machines"].Length == 0)
+{
+  <p>No machines have been added yet!</p>
+}
+<ul>
+  @foreach (Machine m in Model["machines"])
+  {
+    <li>@Html.ActionLink(@m.Name, "Details", "Machines", new { id = @m.MachineId})</li>
+  }
+</ul>
+
+<hr>
