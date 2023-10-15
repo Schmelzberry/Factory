@@ -1,10 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Collections.Generic;
 using Factory.Models;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Factory.Controllers
 {
@@ -19,12 +16,9 @@ namespace Factory.Controllers
 
     [HttpGet("/")]
     public ActionResult Index()
-    { 
-#nullable enable
-      Engineer[]? e = _db.Engineers.ToArray();
-#nullable disable
+    {
+      Engineer[] e = _db.Engineers.ToArray();
       Machine[] m = _db.Machines.ToArray();
-      
       Dictionary<string,object[]> model = new Dictionary<string, object[]>();
       model.Add("engineers", e);
       model.Add("machines", m);
