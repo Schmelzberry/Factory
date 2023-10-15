@@ -7,7 +7,7 @@
 
 @Html.DisplayNameFor(model => model.Name) @Html.DisplayFor(model => model.Name)
 <br>
-@using (Html.BeginForm("Destroy", "Engineers", new { id = Model.EngineerId }))
+@using (Html.BeginForm("Delete", "Engineers", new { id = Model.EngineerId }))
 {
     <input type="submit" value="Delete" />
 }

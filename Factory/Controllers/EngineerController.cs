@@ -55,7 +55,8 @@ namespace Factory.AddControllersWithViews
 
     public ActionResult Delete (int id)
     {
-      Engineer engineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      Engineer engineer = _db.Engineers
+        .FirstOrDefault(engineer => engineer.EngineerId == id);
       return View(engineer);
     }
     [HttpPost, ActionName("Delete")]
@@ -63,7 +64,7 @@ namespace Factory.AddControllersWithViews
     {
       Engineer engineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
       _db.Engineers.Remove(engineer);
-      _db.Engineers.SaveChanges();
+      _db.SaveChanges();
 
       return RedirectToAction("Index");
     }
