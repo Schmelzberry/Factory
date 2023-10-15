@@ -16,13 +16,13 @@
 else 
 {
   <h4>Machines cleared to work on:</h4>
-@foreach (EngineerMachine engineerMachine in Model.EngineerMachines)
+@foreach (EngineerMachine join in Model.EngineerMachines)
 {
-    <p>@engineerMachine.Machine.Name</p>
+    <p>@join.Machine.Name</p>
     
     @using (Html.BeginForm("DeleteJoin", "Engineers"))
     {
-      @Html.Hidden("EngineerMachineId", @engineerMachine.EngineerMachineId)
+      @Html.Hidden("joinId", @join.EngineerMachineId)
       <input type="submit" value="Delete"/>
     }
     <hr/>

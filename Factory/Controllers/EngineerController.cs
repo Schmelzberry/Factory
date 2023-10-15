@@ -100,8 +100,8 @@ namespace Factory.AddControllersWithViews
           [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
-      EngineerMachine engineerMachine = _db.EngineerMachines.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
-      _db.EngineerMachines.Remove(engineerMachine);
+      EngineerMachine joinEntry = _db.EngineerMachines.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
+      _db.EngineerMachines.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
