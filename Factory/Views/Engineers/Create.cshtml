@@ -10,8 +10,9 @@
 {
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
+  @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
   <br>
   <input type="submit" value="Add Engineer">
 }
-<p>@Html.ValidationMessageFor(model => model.EngineerId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
 <p>@Html.ActionLink("Take me to engineers", "Index")
