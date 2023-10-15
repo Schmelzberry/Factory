@@ -8,6 +8,16 @@
 <h2>Engineer Details<h2>
 <p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
 <hr/>
+
+<h4>Machines for Engineer to work on:</h4>
+@if (@Model.EngineerMachines.Count == 0)
+{
+    <p>Engineer does not have any machines.</p>
+}
+@foreach (EngineerMachine engineerMachine in Model.EngineerMachines)
+{
+    <p>@engineerMachine.Machine.Name</p>
+}
 <p>@Html.ActionLink("Change Engineers Details", "Edit", new { id = Model.EngineerId})</p>
 <p>@Html.ActionLink("Remove Engineer", "Delete", new { id = Model.EngineerId})</p>
 <p>@Html.ActionLink("Add Machine for Engineer", "AddMachine", new { id = Model.EngineerId})</p>
