@@ -15,7 +15,7 @@
 
 ## Description
 
-A website for Eau Claire's Hair Salon
+A website for a factory to track engineers and the machines they work on.
 
 ## Setup/Installation Requirements
 
