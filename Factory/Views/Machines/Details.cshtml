@@ -5,9 +5,32 @@
 @model Factory.Models.Machine
 @using Factory.Models
 
-<h2>Machine Details</h2>
-
+<h2>Machine Details<h2>
+<hr/>
 <p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
 <hr/>
-<p>@Html.ActionLink("Update Machine Details", "Edit", new {id = Model.MachineId})</p>
-<p>@Html.ActionLink("Destroy Machine(from record)", "Delete", new {id = Model.MachineId})</p>
+@if (@Model.EngineerMachines.Count == 0)
+{
+    <p>Machine does not have any engineers assigned.</p>
+}
+else 
+{
+  <h4>Engineers who work on this machine:</h4>
+@foreach (EngineerMachine join in Model.EngineerMachines)
+{
+    <p>@join.Machine.Name</p>
+    
+    @using (Html.BeginForm("DeleteJoin", "Machines"))
+    {
+      @Html.Hidden("joinId", @join.EngineerMachineId)
+      <input type="submit" value="Delete"/>
+    }
+    <hr/>
+  }
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Make new Engineer", "Create", "Engineers")</p>
+<p>@Html.ActionLink("Assign Enginner to Machine", "AddEngineer", new { id = Model.MachineId})</p>
+<p>@Html.ActionLink("Change Machine Details", "Edit", new { id = Model.MachineId})</p>
+<p>@Html.ActionLink("Remove Machine", "Delete", new { id = Model.MachineId})</p>
