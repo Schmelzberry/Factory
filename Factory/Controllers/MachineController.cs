@@ -39,5 +39,16 @@ namespace Factory.AddControllersWithViews
       Machine machine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
       return View(machine);
     }
+
+    public ActionResult Edit(int id)
+    {
+      Machine machine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+      return View(machine);
+    }
+    [HttpPost]
+    public ActionResult Edit(Machine machine)
+    {
+      
+    }
   }
 }
