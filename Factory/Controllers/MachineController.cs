@@ -79,7 +79,7 @@ namespace Factory.AddControllersWithViews
             Machine machine = _db.Machines
                 .FirstOrDefault(model => model.MachineId == id);
             ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
-            return View(engineer);
+            return View(machine);
         }
 
         [HttpPost]
@@ -87,15 +87,15 @@ namespace Factory.AddControllersWithViews
         {
 #nullable enable
             EngineerMachine? engineerMachine = _db.EngineerMachines
-                .FirstOrDefault(join => (join.MachineId == machineId && join.EngineerId == engineer.EngineerId));
+                .FirstOrDefault(join => (join.EngineerId == engineerId && join.MachineId == machine.MachineId));
 #nullable disable
-            if (engineerMachine == null && machineId != 0)
+            if (engineerMachine == null && engineerId != 0)
             {
                 _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = engineerId, MachineId = machine.MachineId });
                 _db.SaveChanges();
             }
             return RedirectToAction("Details", new { id = machine.MachineId});
-
+        }
         [HttpPost]
         public ActionResult DeleteJoin(int joinId)
         {

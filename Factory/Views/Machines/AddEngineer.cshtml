@@ -9,7 +9,7 @@
 <hr>
 <h3>Assign an engineer to service this machine: @Html.DisplayFor(model => model.Name)</h3>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddEngineer", "Machines"))
 {
     @Html.HiddenFor(model => model.MachineId)
 
