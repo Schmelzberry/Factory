@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
 using Factory.Models;
-using System.ComponentModel.DataAnnotations;
 
 namespace Factory.AddControllersWithViews
 {
@@ -31,19 +30,11 @@ namespace Factory.AddControllersWithViews
         [HttpPost]
         public ActionResult Create(Engineer engineer)
         {
-        if (!ModelState.IsValid)
-        { 
-          ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
-          return View(engineer);
-        }
-        else
-        {
             _db.Engineers.Add(engineer);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-    }
-     
+
         public ActionResult Details(int id)
         {
             Engineer engineer = _db.Engineers
