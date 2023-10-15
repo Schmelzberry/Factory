@@ -36,7 +36,10 @@ namespace Factory.AddControllersWithViews
 
     public ActionResult Details(int id)
     {
-      Engineer engineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id);
+      Engineer engineer = _db.Engineers
+      .Include(model => model.EngineerMachines)
+      .ThenInclude(model => model.Machine)
+      .FirstOrDefault(engineer => engineer.EngineerId == id);
       return View(engineer);
     }
 
