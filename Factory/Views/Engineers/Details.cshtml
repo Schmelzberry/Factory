@@ -6,18 +6,30 @@
 @using Factory.Models
 
 <h2>Engineer Details<h2>
+<hr/>
 <p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
 <hr/>
-
-<h4>Machines for Engineer to work on:</h4>
 @if (@Model.EngineerMachines.Count == 0)
 {
-    <p>Engineer does not have any machines.</p>
+    <p>Engineer is not assigned to any machines.</p>
 }
+else 
+{
+  <h4>Machines cleared to work on:</h4>
 @foreach (EngineerMachine engineerMachine in Model.EngineerMachines)
 {
     <p>@engineerMachine.Machine.Name</p>
+    
+    @using (Html.BeginForm("DeleteJoin", "Engineers"))
+    {
+      @Html.Hidden("EngineerMachineId", @engineerMachine.EngineerMachineId)
+      <input type="submit" value="Delete"/>
+    }
+    <hr/>
+  }
 }
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add Machine for Engineer", "AddMachine", new { id = Model.EngineerId})</p>
 <p>@Html.ActionLink("Change Engineers Details", "Edit", new { id = Model.EngineerId})</p>
 <p>@Html.ActionLink("Remove Engineer", "Delete", new { id = Model.EngineerId})</p>
-<p>@Html.ActionLink("Add Machine for Engineer", "AddMachine", new { id = Model.EngineerId})</p>
